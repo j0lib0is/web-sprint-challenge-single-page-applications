@@ -16,6 +16,9 @@ const App = () => {
   return (
     <div>
       <Nav />
+      <div className='container'>
+        <Form />
+      </div>
     </div>
   );
 };

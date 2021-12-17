@@ -9,6 +9,7 @@ const StyledNav = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 12px;
 	.logo-type {
 		font-weight: 700;
 		letter-spacing: 

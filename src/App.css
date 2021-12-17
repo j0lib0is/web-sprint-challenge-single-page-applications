@@ -9,6 +9,7 @@ html {
 	padding: 0;
 	margin: 0;
 	max-width: 100%;
+	border: 1px solid lightgray;
 }
 
 body {
@@ -23,4 +24,10 @@ h4,
 h5,
 h6 {
 	color: #101840;
+}
+
+.container {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 48px 0;
 }
