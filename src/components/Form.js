@@ -277,7 +277,7 @@ function Form(props) {
 					
 				</StyledSection>
 				<StyledCheckout>
-					<button id='order-button' disabled={disabled}>Submit Order</button>
+					<button id='order-button' disabled={disabled}>Add to Order</button>
 					<div className='errors'>
 						<div>{errors.size}</div>
 						<div>{errors.sauce}</div>
