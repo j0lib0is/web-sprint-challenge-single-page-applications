@@ -9,7 +9,6 @@ import { Route, Link } from 'react-router-dom';
 // Import components
 import Nav from './components/Nav';
 import Form from './components/Form';
-import Conf from './components/Conf';
 // Import styling
 import './App.css';
 
@@ -51,6 +50,7 @@ const App = () => {
   const postOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(res => {
+        console.log(res);
         setOrders([ res.data, ...orders ]);
       })
       .catch(err => console.error(err))
@@ -94,6 +94,7 @@ const App = () => {
     .then(valid => setDisabled(!valid));
   }, [formValues])
 
+  // Return elements
   return (
     <div>
       <Nav />

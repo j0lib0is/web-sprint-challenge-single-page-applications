@@ -47,7 +47,7 @@ describe('Lambda Eats', () => {
 			cy.url().should('include', 'localhost');
 		})
 
-		it('Fields start out empty', () => {
+		it('Inputs start out empty', () => {
 			sizeDropdown().should('have.value', '');
 			sauceRadio().should('not.be.checked');
 			pepperoniCheckbox().should('not.be.checked');
@@ -66,7 +66,7 @@ describe('Lambda Eats', () => {
 			submitButton().should('be.disabled');
 		})
 
-		it('Fill out form', () => {
+		it('Fill out the form', () => {
 			sizeDropdown()
 				.select('medium')
 				.should('have.value', 'medium');
@@ -94,5 +94,17 @@ describe('Lambda Eats', () => {
 			submitButton()
 				.should('not.be.disabled');
 		})
-	}) // CLOSE INNER DESCRIBE
-}) // CLOSE OUTER DESCRIBE
+
+		it('Submit an order', () => {
+			sizeDropdown().select('medium')
+			sauceRadio().check('ranch')
+			pepperoniCheckbox().check()
+			baconCheckbox().check()
+			onionsCheckbox().check()
+			glutonCheckbox().check()
+			specialInput().type('Make the crust extra stuffed')
+			nameInput().type('Santa Clause')
+			submitButton().click();
+		})
+	})
+})

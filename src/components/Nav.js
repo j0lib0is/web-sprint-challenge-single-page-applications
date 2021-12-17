@@ -12,8 +12,7 @@ const StyledNav = styled.div`
 	padding: 12px;
 	.logo-type {
 		font-weight: 700;
-		letter-spacing: 
-		text-transform: uppercase;
+		font-size: 4.8rem;
 		color: ${pr => pr.theme.primaryBright};
 	}
 `

@@ -5,12 +5,10 @@ import styled from 'styled-components';
 // Create styled components
 const StyledForm = styled.div`
 	margin: 0 auto;
-	border: 1px solid ${pr => pr.theme.lightgrey};
+	width: 100%;
+	border: 1px solid ${pr => pr.theme.primaryBright};
 	border-radius: 16px;
 	overflow: hidden;
-	form {
-		width: 100%;
-	}
 `
 
 const StyledSectionHeader = styled.div`
@@ -23,6 +21,7 @@ const StyledSectionHeader = styled.div`
 `
 
 const StyledSection = styled.div`
+	background-color: ${pr => pr.theme.white};
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
@@ -62,9 +61,6 @@ const StyledSection = styled.div`
 	.radio input {
 		margin-right: 8px;
 	}
-	.checkout .errors {
-		color: firebrick;
-	}
 `
 
 const StyledCheckout = styled.div`
@@ -73,6 +69,9 @@ const StyledCheckout = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	background-color: ${pr => pr.theme.primaryLight};
+	.errors {
+		color: firebrick;
+	}
 `
 
 // Build Form
@@ -92,7 +91,7 @@ function Form(props) {
 		submit();
 	}
 
-	// Return Elements
+	// Return elements
 	return (
 		<StyledForm>
 			<form id='pizza-form' onSubmit={onSubmit}>

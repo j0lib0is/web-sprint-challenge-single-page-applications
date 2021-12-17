@@ -1,4 +1,5 @@
-export default {
+// Define Theme
+const Theme = {
   black: 'black',
   lightgrey: '#F5F6F8',
   white: 'white',
@@ -7,3 +8,6 @@ export default {
   primaryLight: '#FDF4F4',
   breakpointMobile: '(max-width: 550px)'
 }
+
+// Export Theme
+export default Theme;
