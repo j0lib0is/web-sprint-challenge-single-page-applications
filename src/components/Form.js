@@ -11,35 +11,19 @@ const StyledForm = styled.div`
 	form {
 		width: 100%;
 	}
-	button {
-		margin: 8px 0px;
-		padding: 16px 24px;
-		border: none;
-		border-radius: 4px;
-		background-color: ${pr => pr.theme.medBlue};
-		color: white;
-		cursor: pointer;
-	}
-	button:hover {
-		background-color: ${pr => pr.theme.darkBlue};
-	}
-	button:disabled {
-		background-color: whitesmoke;
-		color: lightgray;
-	}
 `
 
 const StyledSectionHeader = styled.div`
-	background-color: ${pr => pr.theme.medBlue};
+	background-color: ${pr => pr.theme.primaryBright};
 	color: ${pr => pr.theme.white};
-	padding: 24px;
+	padding: 16px;
 	h1, h2, h3, h4, h5, h6 {
 		color: ${pr => pr.theme.white};
 	}
 `
 
 const StyledSection = styled.div`
-	padding: 24px;
+	padding: 16px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -78,9 +62,17 @@ const StyledSection = styled.div`
 	.radio input {
 		margin-right: 8px;
 	}
-	.errors {
+	.checkout .errors {
 		color: firebrick;
 	}
+`
+
+const StyledCheckout = styled.div`
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: ${pr => pr.theme.primaryLight};
 `
 
 // Build Form
@@ -284,14 +276,14 @@ function Form(props) {
 					</label>
 					
 				</StyledSection>
-				<StyledSection>
+				<StyledCheckout>
 					<button id='order-button' disabled={disabled}>Submit Order</button>
 					<div className='errors'>
 						<div>{errors.size}</div>
 						<div>{errors.sauce}</div>
 						<div>{errors.name}</div>
 					</div>
-				</StyledSection>
+				</StyledCheckout>
 			</form>
 		</StyledForm>
 	);

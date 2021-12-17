@@ -14,7 +14,7 @@ const StyledNav = styled.div`
 		font-weight: 700;
 		letter-spacing: 
 		text-transform: uppercase;
-		color: ${pr => pr.theme.medBlue};
+		color: ${pr => pr.theme.primaryBright};
 	}
 `
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import FormSchema from './validation/formSchema';
 // Import routing
-import { Route, Switch } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 // Import components
 import Nav from './components/Nav';
 import Form from './components/Form';
@@ -98,13 +98,20 @@ const App = () => {
     <div>
       <Nav />
       <div className='container'>
-        <Form
+        <Route exact path='/'>
+          <Link to={`/pizza`} id='order-pizza'>
+            <button>Order Pizza</button>
+          </Link>
+        </Route>
+        <Route path='/pizza'>
+          <Form
           values={formValues}
           change={changeHandler}
           submit={submitHandler}
           disabled={disabled}
           errors={formErrors}
         />
+        </Route>
       </div>
     </div>
   );
