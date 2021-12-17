@@ -66,9 +66,25 @@ const StyledSection = styled.div`
 
 // Build Form
 function Form(props) {
+	// Declare state
+	const { values, change, submit, disabled, errors} = props;
+
+	// Form functions
+	const onChange = event => {
+		const { name, value, checked, type } = event.target;
+		const usedValue = type === 'checkbox' ? checked : value;
+		change(name, usedValue);
+	}
+
+	const onSubmit = event => {
+		event.preventDefault();
+		submit();
+	}
+
+	// Return Elements
 	return (
 		<StyledForm>
-			<form id='pizza-form'>
+			<form id='pizza-form' onSubmit={onSubmit}>
 				<StyledSectionHeader>
 					<h3>Choose Your Size</h3>
 					<p>*Required</p>
@@ -94,6 +110,8 @@ function Form(props) {
 							type='radio'
 							name='sauce'
 							value='Organic Red'
+							value={values.red}
+							onChange={onChange}
 						></input>
 						Organic Red
 					</label>
@@ -102,6 +120,8 @@ function Form(props) {
 							type='radio'
 							name='sauce'
 							value='Garlic Ranch'
+							value={values.ranch}
+							onChange={onChange}
 						></input>
 						Garlic Ranch
 					</label>
@@ -110,6 +130,8 @@ function Form(props) {
 							type='radio'
 							name='sauce'
 							value='BBQ Sauce'
+							value={values.bbq}
+							onChange={onChange}
 						></input>
 						BBQ Sauce
 					</label>
@@ -118,6 +140,8 @@ function Form(props) {
 							type='radio'
 							name='sauce'
 							value='Spinach Alfredo'
+							value={values.alfredo}
+							onChange={onChange}
 						></input>
 						Spinach Alfredo
 					</label>
@@ -134,6 +158,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Pepperoni'
+									value={values.pepperoni}
+									onChange={onChange}
 								/>
 								Pepperoni
 							</label>
@@ -141,6 +167,7 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Italian Sausage'
+									onChange={onChange}
 								/>
 								Italian Sausage
 							</label>
@@ -148,6 +175,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Canadian Bacon'
+									value={values.bacon}
+									onChange={onChange}
 								/>
 								Canadian Bacon
 							</label>
@@ -158,6 +187,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Onions'
+									value={values.onions}
+									onChange={onChange}
 								/>
 								Onions
 							</label>
@@ -165,6 +196,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Green Peppers'
+									value={values.peppers}
+									onChange={onChange}
 								/>
 								Green Peppers
 							</label>
@@ -172,6 +205,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Black Olives'
+									value={values.olives}
+									onChange={onChange}
 								/>
 								Black Olives
 							</label>
@@ -179,6 +214,8 @@ function Form(props) {
 								<input
 									type='checkbox'
 									name='Roasted Garlic'
+									value={values.garlic}
+									onChange={onChange}
 								/>
 								Roasted Garlic
 							</label>
@@ -194,6 +231,8 @@ function Form(props) {
 						<input
 							type='checkbox'
 							name='Gluton Free'
+							value={values.gluton}
+							onChange={onChange}
 						></input>
 						Gluton Free Crust
 					</label>
@@ -205,7 +244,7 @@ function Form(props) {
 				<StyledSection>
 					<label>
 						<h5>Special Instructions</h5>
-						<input type='text' name='special' id='special-text'></input>
+						<input type='text' name='special' id='special-text' onChange={onChange}></input>
 					</label>
 				</StyledSection>
 				<StyledSectionHeader>
@@ -215,9 +254,17 @@ function Form(props) {
 				<StyledSection>
 					<label>
 						<h5>Name</h5>
-						<input type='text' name='name' id='name-input'></input>
+						<input type='text' name='name' id='name-input' onChange={onChange}></input>
 					</label>
-					<button id='order-button'>Submit Order</button>
+					
+				</StyledSection>
+				<StyledSection>
+					<button id='order-button' disabled={disabled}>Submit Order</button>
+					<div className='errors'>
+						<div>{errors.size}</div>
+						<div>{errors.sauce}</div>
+						<div>{errors.name}</div>
+					</div>
 				</StyledSection>
 			</form>
 		</StyledForm>
