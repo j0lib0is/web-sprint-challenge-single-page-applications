@@ -11,6 +11,22 @@ const StyledForm = styled.div`
 	form {
 		width: 100%;
 	}
+	button {
+		margin: 8px 0px;
+		padding: 16px 24px;
+		border: none;
+		border-radius: 4px;
+		background-color: ${pr => pr.theme.medBlue};
+		color: white;
+		cursor: pointer;
+	}
+	button:hover {
+		background-color: ${pr => pr.theme.darkBlue};
+	}
+	button:disabled {
+		background-color: whitesmoke;
+		color: lightgray;
+	}
 `
 
 const StyledSectionHeader = styled.div`
@@ -62,11 +78,14 @@ const StyledSection = styled.div`
 	.radio input {
 		margin-right: 8px;
 	}
+	.errors {
+		color: firebrick;
+	}
 `
 
 // Build Form
 function Form(props) {
-	// Declare state
+	// Deconstruct props
 	const { values, change, submit, disabled, errors} = props;
 
 	// Form functions
@@ -92,11 +111,17 @@ function Form(props) {
 				<StyledSection>
 					<label className='dropdown'>
 						<h5>Select a Size</h5>
-						<select type='select' name='size' id='size-dropdown'>
+						<select
+							type='select'
+							name='size'
+							id='size-dropdown'
+							value={values.size}
+							onChange={onChange}
+						>
 							<option value=''>——Select a Size——</option>
-							<option value='Small'>Small</option>
-							<option value='Medium'>Medium</option>
-							<option value='Large'>Large</option>
+							<option value='small'>Small</option>
+							<option value='medium'>Medium</option>
+							<option value='large'>Large</option>
 						</select>
 					</label>
 				</StyledSection>
@@ -109,9 +134,9 @@ function Form(props) {
 						<input
 							type='radio'
 							name='sauce'
-							value='Organic Red'
-							value={values.red}
+							value='red'
 							onChange={onChange}
+							checked={values.sauce === 'red'}
 						></input>
 						Organic Red
 					</label>
@@ -119,9 +144,9 @@ function Form(props) {
 						<input
 							type='radio'
 							name='sauce'
-							value='Garlic Ranch'
-							value={values.ranch}
+							value='ranch'
 							onChange={onChange}
+							checked={values.sauce === 'ranch'}
 						></input>
 						Garlic Ranch
 					</label>
@@ -129,9 +154,9 @@ function Form(props) {
 						<input
 							type='radio'
 							name='sauce'
-							value='BBQ Sauce'
-							value={values.bbq}
+							value='bbq'
 							onChange={onChange}
+							checked={values.sauce === 'bbq'}
 						></input>
 						BBQ Sauce
 					</label>
@@ -139,9 +164,9 @@ function Form(props) {
 						<input
 							type='radio'
 							name='sauce'
-							value='Spinach Alfredo'
-							value={values.alfredo}
+							value='alfredo'
 							onChange={onChange}
+							checked={values.sauce === 'alfredo'}
 						></input>
 						Spinach Alfredo
 					</label>
@@ -157,7 +182,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Pepperoni'
+									name='pepperoni'
 									value={values.pepperoni}
 									onChange={onChange}
 								/>
@@ -166,7 +191,8 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Italian Sausage'
+									name='sausage'
+									value={values.sausage}
 									onChange={onChange}
 								/>
 								Italian Sausage
@@ -174,7 +200,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Canadian Bacon'
+									name='bacon'
 									value={values.bacon}
 									onChange={onChange}
 								/>
@@ -186,7 +212,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Onions'
+									name='onions'
 									value={values.onions}
 									onChange={onChange}
 								/>
@@ -195,7 +221,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Green Peppers'
+									name='peppers'
 									value={values.peppers}
 									onChange={onChange}
 								/>
@@ -204,7 +230,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Black Olives'
+									name='olives'
 									value={values.olives}
 									onChange={onChange}
 								/>
@@ -213,7 +239,7 @@ function Form(props) {
 							<label className='checkbox'>
 								<input
 									type='checkbox'
-									name='Roasted Garlic'
+									name='garlic'
 									value={values.garlic}
 									onChange={onChange}
 								/>
@@ -230,7 +256,7 @@ function Form(props) {
 					<label className='checkbox'>
 						<input
 							type='checkbox'
-							name='Gluton Free'
+							name='gluton'
 							value={values.gluton}
 							onChange={onChange}
 						></input>
